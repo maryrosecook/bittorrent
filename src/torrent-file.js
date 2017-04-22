@@ -1,11 +1,11 @@
 const fs = require("fs");
 const bencode = require("bencode");
 
-module.exports = function trackerUrl(trackerFilePath) {
-  return decodeTrackerFile(trackerFilePath).announce;
+module.exports = function trackerUrl(torrentFilePath) {
+  return decodeTorrentFile(torrentFilePath).announce;
 };
 
-function decodeTrackerFile(trackerFilePath) {
+function decodeTorrentFile(torrentFilePath) {
   return bencode
-    .decode(fs.readFileSync(trackerFilePath), "utf8");
+    .decode(fs.readFileSync(torrentFilePath), "utf8");
 };
