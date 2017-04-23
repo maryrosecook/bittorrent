@@ -6,7 +6,7 @@ let proxyquire = require("proxyquire");
 const path = require("path");
 const tracker = require("../src/tracker");
 
-describe("#trackerRequestUrl", function() {
+describe("#requestUrl", function() {
   let torrentPath;
   beforeEach(function() {
     torrentPath = path.resolve(
