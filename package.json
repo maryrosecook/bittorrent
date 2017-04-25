@@ -6,6 +6,9 @@
   "scripts": {
     "test": "nodemon -q -x 'node --harmony node_modules/jasmine/bin/jasmine.js'"
   },
+  "engines": {
+    "node": ">=7.4.0"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -18,6 +21,8 @@
     "bencode": "^0.11.0",
     "proxyquire": "^1.7.11",
     "randomstring": "^1.1.5",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
     "underscore": "^1.8.3"
   }
 }
