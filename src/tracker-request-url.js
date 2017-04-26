@@ -4,14 +4,15 @@ const fs = require("fs");
 const bencode = require("bencode");
 const querystring = require("querystring");
 const url = require("url");
-const crypto = require("crypto");
 const _ = require("underscore");
 const randomstring = require("randomstring").generate;
+const readTorrentFile = require("./read-torrent-file");
+const infoHashHex = require("./info-hash-hex");
 
 module.exports = function trackerRequestUrl(torrentFilePath) {
-  let torrentData = readTorrentDataFromDisk(torrentFilePath);
+  let torrentData = readTorrentFile(torrentFilePath);
   return constructRequestUrl(announceUrl(torrentData),
-                             infoHashHex(torrentData),
+                             infoHashHex(torrentFilePath),
                              peerId(),
                              leftToDownload(torrentData));
 };
@@ -46,21 +47,6 @@ function constructRequestUrl(announceUrl, infoHashHex, peerId, left) {
 
 function percentEncodeHex(hexString) {
   return "%" + hexString.match(/.{1,2}/g).join("%");
-};
-
-function infoHashHex(torrentData) {
-  return crypto.createHash('sha1')
-    .update(bencode.encode(torrentData.info))
-    .digest("hex");
-};
-
-function readTorrentDataFromDisk(torrentFilePath) {
-  let torrentDataBuffer = fs.readFileSync(torrentFilePath);
-  return decodeTorrentFile(torrentDataBuffer);
-};
-
-function decodeTorrentFile(torrentDataBuffer) {
-  return bencode.decode(torrentDataBuffer);
 };
 
 function leftToDownload(torrentData) {
