@@ -1,10 +1,9 @@
 "use strict";
 
-let sinon = require("sinon");
+const sinon = require("sinon");
 require("sinon-as-promised"); // adds promise methods to sinon
-let proxyquire = require("proxyquire");
+const proxyquire = require("proxyquire");
 const bencode = require("bencode");
-
 const path = require("path");
 
 describe("#requestPeers", function() {

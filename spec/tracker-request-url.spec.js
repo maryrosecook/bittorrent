@@ -1,7 +1,7 @@
 "use strict";
 
-let sinon = require("sinon");
-let proxyquire = require("proxyquire");
+const sinon = require("sinon");
+const proxyquire = require("proxyquire");
 
 const path = require("path");
 const trackerRequestUrl = require("../src/tracker-request-url");
