@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon -q -x 'node --harmony node_modules/jasmine/bin/jasmine.js'"
+    "test": "nodemon -L -q -x 'node --harmony node_modules/jasmine/bin/jasmine.js'"
   },
   "engines": {
     "node": ">=7.4.0"
