@@ -3,7 +3,7 @@ const requestPeers = require("./request-peers");
 const parsePeerAddresses = require("./parse-peer-addresses");
 
 module.exports = async function downloadTorrent(torrentPath) {
-  return
+  return await
     parsePeerAddresses(
       await requestPeers(
         trackerRequestUrl(torrentPath)));
