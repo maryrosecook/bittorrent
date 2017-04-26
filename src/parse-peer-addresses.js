@@ -11,15 +11,15 @@ function peerBytes(response) {
   return bencode.decode(response).peers;
 };
 
-function parsePeerAddress([byte0, byte1, byte2, byte3, byte4, byte5]) {
-  return `${ip(byte0, byte1, byte2, byte3)}:${port(byte4, byte5)}`;
+function parsePeerAddress(bytes) {
+  return `${ip(bytes.slice(0, 4))}:${port(bytes.slice(4, 6))}`;
 };
 
-function ip(byte0, byte1, byte2, byte3) {
+function ip([byte0, byte1, byte2, byte3]) {
   return `${byte0}.${byte1}.${byte2}.${byte3}`;
 };
 
-function port(byte4, byte5) {
+function port([byte4, byte5]) {
   let buffer = Buffer.alloc(2);
   buffer.writeUInt8(byte4, 0);
   buffer.writeUInt8(byte5, 1);
