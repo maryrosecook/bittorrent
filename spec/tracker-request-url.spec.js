@@ -23,11 +23,11 @@ describe("#trackerRequestUrl", function() {
 
   it("has peer_id that includes MC", function() {
     let trackerRequestUrl = proxyquire("../src/tracker-request-url", {
-      "randomstring": { generate: sinon.stub().returns("RANDOMID") }
+      "./peer-id": sinon.stub().returns("MC_RANDOM_ID________")
     });
 
     expect(trackerRequestUrl(torrentPath))
-      .toMatch("\\?peer_id=MCRANDOMID");
+      .toMatch("\\?peer_id=MC_RANDOM_ID________");
   });
 
   it("has length set to total length of file", function() {
