@@ -7,12 +7,9 @@ const path = require("path");
 const trackerRequestUrl = require("../src/tracker-request-url");
 
 describe("#trackerRequestUrl", function() {
-  let torrentPath;
-  beforeEach(function() {
-    torrentPath = path.resolve(
-      __dirname,
-      "../data/flagfromserver.torrent");
-  });
+  let torrentPath = path.resolve(
+    __dirname,
+    "../data/flagfromserver.torrent");
 
   it("is URL of tracker in torrent", function() {
     expect(trackerRequestUrl(torrentPath))
