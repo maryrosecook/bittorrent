@@ -1,0 +1,17 @@
+Handshake {
+  Start = protocolLength protocolString reservedBytes infoHash peerId
+
+  protocolLength = "13"
+
+  protocolString = "426974546f7272656e742070726f746f636f6c"
+
+  reservedBytes = "0000000000000000"
+
+  infoHash = twentyHexBytes
+
+  peerId = twentyHexBytes
+
+  twentyHexBytes = h h h h h h h h h h h h h h h h h h h h
+
+  h = alnum alnum
+}
