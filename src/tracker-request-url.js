@@ -5,9 +5,9 @@ const bencode = require("bencode");
 const querystring = require("querystring");
 const url = require("url");
 const _ = require("underscore");
-const randomstring = require("randomstring").generate;
 const readTorrentFile = require("./read-torrent-file");
 const infoHashHex = require("./info-hash-hex");
+const peerId = require("./peer-id");
 
 module.exports = function trackerRequestUrl(torrentFilePath) {
   let torrentData = readTorrentFile(torrentFilePath);
@@ -15,10 +15,6 @@ module.exports = function trackerRequestUrl(torrentFilePath) {
                              infoHashHex(torrentFilePath),
                              peerId(),
                              leftToDownload(torrentData));
-};
-
-function peerId() {
-  return "MC" + randomstring(18);
 };
 
 // Not happy with this.  A SHA1 is 40 chars or 20 hex bytes.  The
