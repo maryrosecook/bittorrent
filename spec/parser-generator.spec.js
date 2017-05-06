@@ -27,6 +27,6 @@ describe("parser and generator", function() {
     expect(parsedHandshake.infoHash)
       .toEqual("2b15ca2bfd48cdd76d39ec55a3ab1b8a57180a09");
     expect(parsedHandshake.peerId)
-      .toEqual("MCjsdxwd9HR2qXDZcAl7");
+      .toEqual(peerId);
   });
 });
